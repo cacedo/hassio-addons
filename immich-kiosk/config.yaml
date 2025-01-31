@@ -1,0 +1,27 @@
+# https://developers.home-assistant.io/docs/add-ons/configuration#add-on-config
+name: Immich Kiosk
+version: "dev"
+slug: immich-kiosk
+description: Immich Kisok add-on
+url: "https://github.com/home-assistant/addons-example/tree/main/example"
+arch:
+  - armhf
+  - armv7
+  - aarch64
+  - amd64
+  - i386
+init: false
+map:
+  - share:rw
+ports:
+  3001/tcp: 3001
+ports_description:
+  3001/tcp: Immich Kiosk web interfaces
+webui: http://[HOST]:[PORT:3001]
+options:
+  immich_api_key: ""
+  immich_url: ""
+schema:
+  immich_api_key: "str"
+  immich_url: "str"
+#image: "ghcr.io/home-assistant/{arch}-addon-example"

@@ -1,0 +1,24 @@
+#!/usr/bin/with-contenv bashio
+# ==============================================================================
+# Start the example service
+# s6-overlay docs: https://github.com/just-containers/s6-overlay
+# ==============================================================================
+
+# Add your code here
+
+# Declare variables
+declare immich_url
+declare immich_api_key
+
+## Get the 'immich_url' and 'immich_api_key' keys from the user config options.
+immich_url=$(bashio::config 'immich_url')
+immich_api_key=$(bashio::config 'immich_api_key')
+
+
+## Export the environment variables
+export KIOSK_IMMICH_URL="${immich_url}"
+export KIOSK_IMMICH_API_KEY="${immich_api_key}"
+export KIOSK_PORT=3001
+
+## Run your program
+exec /usr/local/bin/immich-kiosk
